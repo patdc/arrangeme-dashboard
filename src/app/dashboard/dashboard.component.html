@@ -1,0 +1,149 @@
+<div class="min-h-screen flex">
+  <!-- Left Menu -->
+  <div class="bg-sky-950 text-white w-96 p-6">
+    <h1 class="text-md font-semibold mb-0">Vendas de Partitura</h1>
+    <div class="border-t border-slate-600 my-2"></div>
+
+    <!-- Add your menu items here -->
+    <ul>
+      <li *ngFor="let year of years" class="mb-2">
+        <a [routerLink]="['/', year]" class="block font-bold text-lg">{{
+          year
+        }}</a>
+        <ul>
+          <li *ngFor="let month of months" class="ml-2 text-slate-300 text-sm">
+            <a [routerLink]="['/', year, month.value]">{{ month.name }}</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Right Side -->
+  <div class="flex flex-col flex-grow bg-slate-200 p-8">
+    <app-header
+      [currentMonthAndYear]="currentMonthAndYear"
+      [daysRemaining]="daysRemaining"
+      [countriesList]="countriesList"
+      [years]="years"
+      (fileUploaded)="handleFileUpload($event)"
+      (yearChanged)="filterByYear($event)"
+    >
+      ></app-header
+    >
+    <div>
+      <h1 class="text-2xl mb-2 font-bold text-slate-700">Visão Global</h1>
+    </div>
+    <div class="flex flex-wrap gap-4">
+      <app-primary-card
+        class="w-full md:flex-1"
+        [label]="'Comissões'"
+        [description]="'(Quanto entrou no seu bolso)'"
+        [value]="totalCommissions | currency : 'USD'"
+        [icon]="faDollarSign"
+      ></app-primary-card>
+      <app-primary-card
+        class="w-full md:flex-1"
+        [label]="'Vendas'"
+        [description]="'Partituras vendidas'"
+        [value]="totalQuantity"
+        [icon]="faBagShopping"
+      ></app-primary-card>
+      <app-primary-card
+        class="w-full md:flex-1"
+        [label]="'Vendas totais'"
+        [description]="'Faturamento do site'"
+        [value]="totalSales | currency : 'USD'"
+        [icon]="faHandHoldingDollar"
+      ></app-primary-card>
+      <app-primary-card
+        class="w-full md:flex-1"
+        [label]="'Reembolsos'"
+        [description]="'Partituras reembolsadas'"
+        [value]="totalRefunds | currency : 'USD'"
+        [icon]="faMoneyBillTransfer"
+      ></app-primary-card>
+    </div>
+
+    <div class="border-t border-slate-300 my-8"></div>
+
+    <app-motivation-card
+      [countriesList]="countriesList"
+      [totalCommissions]="totalCommissions"
+      [totalSales]="totalSales"
+    ></app-motivation-card>
+
+    <div class="border-t border-slate-300 my-8"></div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <h1 class="text-2xl mb-0 font-bold text-slate-700">
+          Instrumentações preferidas 🎻
+        </h1>
+        <h2 class="text-lg text-slate-500 mb-4">
+          Que que o povo tá gostando de tocar (obviamente não é oboé)
+        </h2>
+        <div class="container mx-auto">
+          <div
+            *ngFor="let item of mostUsedFormats.slice(0, displayCount)"
+            class="mb-2 bg-white shadow-lg rounded-lg p-4 flex justify-between"
+          >
+            <span class="text-slate-700 font-semibold">{{ item.format }}</span>
+            <span class="text-sky-400">{{ item.count }}</span>
+          </div>
+          <button
+            *ngIf="displayCount < mostUsedFormats.length"
+            (click)="onSeeMore()"
+            class="mt-4 bg-sky-900 rounded-full text-white py-2 px-4 mr-2"
+          >
+            Ver mais...
+          </button>
+          <button
+            *ngIf="displayCount > initialDisplayCount"
+            (click)="onShowLess()"
+            class="mt-4 bg-slate-500 rounded-full text-white py-2 px-4"
+          >
+            Ver menos
+          </button>
+        </div>
+      </div>
+
+      <!-- Commissions by Country Section -->
+      <div>
+        <h1 class="text-2xl mb-0 font-bold text-slate-700">
+          Comissões por país 🇺🇸
+        </h1>
+        <h2 class="text-lg text-slate-500 mb-4">
+          Só gringo pra comprar partitura mesmo kkkk
+        </h2>
+        <div class="container mx-auto">
+          <div
+            *ngFor="
+              let item of salesAndQuantityByCountryData.slice(0, displayCount)
+            "
+            class="mb-2 bg-white shadow-lg rounded-lg p-4 flex justify-between"
+          >
+            <span class="text-slate-700 font-semibold">{{ item.country }}</span>
+            <span class="text-sky-500">
+              {{ item.comissions | currency : "USD" : "symbol" : "1.2-2" }}
+            </span>
+          </div>
+          <button
+            *ngIf="displayCount < salesAndQuantityByCountryData.length"
+            (click)="onSeeMore()"
+            class="mt-4 bg-sky-900 rounded-full text-white py-2 px-4 mr-2"
+          >
+            Ver mais...
+          </button>
+          <button
+            *ngIf="displayCount > initialDisplayCount"
+            (click)="onShowLess()"
+            class="mt-4 bg-slate-500 text-white py-2 px-4 rounded-full"
+          >
+            Ver menos
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

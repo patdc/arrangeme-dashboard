@@ -1,0 +1,17 @@
+<div
+  class="flex items-center bg-white rounded-2xl border p-6 w-auto gap-4 h-24"
+>
+  <!-- Left Side of the Card -->
+  <div class="flex flex-col items-start mr-4">
+    <fa-icon [icon]="icon" class="text-slate-400"></fa-icon>
+    <h2 class="text-md font-semibold mb-0 text-slate-700">{{ label }}</h2>
+    <h3 *ngIf="description" class="text-xs text-slate-500">
+      {{ description }}
+    </h3>
+  </div>
+
+  <!-- Right Side of the Card -->
+  <div class="flex flex-col items-end justify-center flex-grow">
+    <span class="text-lg font-bold text-sky-500">{{ value }}</span>
+  </div>
+</div>
