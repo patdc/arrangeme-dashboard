@@ -7,6 +7,9 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MotivationCardComponent } from './motivation-card/motivation-card.component';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
+// import { TableModule } from 'primeng/table';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +18,7 @@ import { RouterModule } from '@angular/router';
     HeaderComponent,
     MotivationCardComponent,
   ],
-  imports: [CommonModule, FormsModule, FontAwesomeModule, RouterModule],
+  imports: [CommonModule, FormsModule, FontAwesomeModule, RouterModule, SharedModule],
   providers: [],
   bootstrap: [],
 })

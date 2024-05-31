@@ -1,20 +1,12 @@
-<div class="flex justify-between items-center mb-8">
+<div class="flex justify-between items-center p-9">
   <div>
-    <h1 class="text-3xl text-slate-700 font-bold">Bom dia, Patricia</h1>
-    <h2 class="text-lg text-slate-500">{{ currentMonthAndYear }}</h2>
-    <p class="text-slate-400">
-      Faltam {{ daysRemaining }} dias para o mês acabar
-    </p>
+    <h1 class="text-3xl text-slate-700 font-bold">Bom dia lindeza</h1>
+    Vamos ver as suas vendinhas? ❤️
   </div>
 
   <div class="flex">
     <div class="ml-6">
-      <input
-        type="file"
-        #fileInput
-        style="display: none"
-        (change)="handleFileUpload($event)"
-      />
+      <input type="file" #fileInput style="display: none" (change)="handleFileUpload($event)" />
 
       <!-- TODO: implementar relatório com export em PDF  -->
       <!-- <button
@@ -22,10 +14,8 @@
       >
         Download report
       </button> -->
-      <button
-        (click)="fileInput.click()"
-        class="bg-sky-900 border-2 text-white px-4 py-2 rounded-full w-auto hover:bg-sky-900"
-      >
+      <button (click)="fileInput.click()" class="bg-blue-500  text-white px-4 py-2 rounded-md w-auto hover:bg-blue-400">
+
         Upload a CSV file
       </button>
     </div>

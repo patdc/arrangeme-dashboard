@@ -1,0 +1,39 @@
+/* Home Section */
+.home-section {
+  position: relative;
+  background: rgba(249, 250, 251, 1);
+
+  /* background-image: radial-gradient(circle farthest-corner at 7.2% 13.6%, #25f9f5 0%, #0846da 90%); */
+  height: 100vh;
+  left: 260px;
+  width: calc(100% - 260px);
+  transition: all 0.5s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-section .home-header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.home-section .home-header .title {
+  color: black;
+  font-size: 35px;
+}
+
+.home-section .home-header .title {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.home-section .home-view {
+  /* height: 100%; */
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: gray;
+}

@@ -18,7 +18,7 @@ export class MetricsService {
           console.error(`Could not parse Sales value: ${item['Sales']}`);
           return total;
         }
-        return total + Math.round(sales);
+        return total + sales;
       } else {
         console.error(
           `Item or Sales field is undefined: ${JSON.stringify(item)}`
@@ -40,7 +40,7 @@ export class MetricsService {
           );
           return total;
         }
-        return total + Math.round(commissions);
+        return total + commissions;
       } else {
         console.error(
           `Item or Est. Commissions field is undefined: ${JSON.stringify(item)}`

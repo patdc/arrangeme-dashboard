@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { MetricsService } from '../services/metrics.service';
 import * as Papa from 'papaparse';
 import { Product } from '../models/product.model';
@@ -10,6 +10,8 @@ import {
   faDollarSign,
   faMoneyBillTransfer,
 } from '@fortawesome/free-solid-svg-icons';
+import Chart from 'chart.js/auto';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -22,6 +24,16 @@ export class DashboardComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {}
+
+  public chart: any;
+  public startDate: string;
+  public endDate: string;
+
+  public groupBy:string;
+
+  
+
+
   csvData: Product[];
   filteredData: Product[] = [];
 
@@ -86,11 +98,15 @@ export class DashboardComponent implements OnInit {
       this.selectedMonth = params['month'] ? Number(params['month']) : null;
       this.filterDataByRouteParams(params['year'], params['month']);
     });
+    this.createChart();
+
   }
 
   loadCsvData(): void {
     this.csvData = JSON.parse(localStorage.getItem('csvData') || '[]');
+    console.log(this.csvData)
     this.calculateMetrics(this.csvData);
+
     this.years = this.getYearsAvailable(this.csvData);
   }
 
@@ -105,6 +121,7 @@ export class DashboardComponent implements OnInit {
     this.salesAndQuantityByCountryData =
       this.metricsService.salesAndQuantityByCountry(data);
     this.countriesList = this.metricsService.countriesCount(data);
+
   }
 
   handleFileUpload(event: any): void {
@@ -186,6 +203,9 @@ export class DashboardComponent implements OnInit {
     // Update filtered data and recalculate metrics
     this.filteredData = data;
     this.calculateMetrics(this.filteredData);
+
+    this.updateChart()
+
   }
 
   onSeeMore(): void {
@@ -223,4 +243,175 @@ export class DashboardComponent implements OnInit {
     this.selectedMonth = month;
     this.navigate();
   }
+
+  createChart() {
+
+    const labels = this.filteredData.map(data => data.Date);
+    const salesData = this.filteredData.map(data => Number(data.Sales.replace('$', ''))); 
+    const commissionData = this.filteredData.map(data =>+data['Est. Commissions'].replace('$', '')); 
+    console.log(commissionData)
+  
+    this.chart = new Chart("MyChart", {
+      type: 'bar',
+
+      data: {
+        labels: labels, 
+	       datasets: [
+          // {
+          //   label: "Sales",
+          //   data: salesData,
+          //   backgroundColor: '#fbbf24'
+          // },
+          {
+            label: "Profit",
+            data: commissionData,
+            backgroundColor: '#334155'
+
+          }  
+        ]
+      },
+      options: {
+        aspectRatio:3.5
+
+      }
+      
+    });
+  }
+ 
+  updateChart() {
+    if (this.chart) {
+      // Update data
+      this.chart.data.labels = this.filteredData.map(data => data.Date);
+      this.chart.data.datasets[0].data = this.filteredData.map(data => Math.round(Number(data.Sales.replace('$', ''))));
+  
+      // Uncomment this if you have the second dataset enabled
+      // this.chart.data.datasets[1].data = this.filteredData.map(data => Number(data['Est. Commissions'].replace('$', ''))); 
+  
+      // Refresh the chart
+      this.chart.update();
+    } else {
+      this.createChart(); // Create the chart if it does not exist
+    }
+  }
+
+  filterDataByDateRange() {
+    const start = new Date(this.startDate);
+    const end = new Date(this.endDate);
+  
+    this.filteredData = this.csvData.filter((item) => {
+      const itemDate = new Date(item.Date);
+      return itemDate >= start && itemDate <= end;
+    });
+  
+    this.updateChart(); // Call updateChart to refresh the chart with new data
+  }
+  
+  onDateChange() {
+    if (this.startDate && this.endDate) {
+      this.filterDataByDateRange();
+    }
+  }
+  
+  //CORRIGER
+  groupByMonth(data: Product[]): any[] {
+    const grouped = data.reduce((acc, item) => {
+      // Parse the date safely
+      const date = new Date(item.Date);
+      if (isNaN(date.getTime())) {
+        console.error('Invalid date:', item.Date);
+        return acc; // Continue with the next iteration
+      }
+  
+      const month = date.getMonth(); // zero-indexed month
+      const year = date.getFullYear();
+      const monthYear = `${year}-${month + 1}`; // Formatting month as 'YYYY-MM'
+  
+      // Initialize the grouping object if it doesn't exist
+      if (!acc[monthYear]) {
+        acc[monthYear] = { Sales: 0, Commissions: 0 };
+      }
+  
+      // Safely parse and accumulate sales
+      const sales = parseFloat(item.Sales.replace('$', ''));
+      if (!isNaN(sales)) {
+        acc[monthYear].Sales += sales;
+      } else {
+        console.error('Invalid sales value:', item.Sales);
+      }
+  
+      // Safely parse and accumulate commissions
+      const commissions = parseFloat(item['Est. Commissions'].replace('$', ''));
+      if (!isNaN(commissions)) {
+        acc[monthYear].Commissions += commissions;
+      } else {
+        console.error('Invalid commission value:', item['Est. Commissions']);
+      }
+  
+      return acc;
+    }, {});
+  
+    // Map the grouped object to an array suitable for charting
+    return Object.keys(grouped).map(key => ({
+      Date: key,
+      Sales: grouped[key].Sales,
+      Commissions: grouped[key].Commissions
+    }));
+  }
+
+
+  //CORRIGER
+
+  groupByWeek(data: Product[]): any[] {
+    const grouped = data.reduce((acc, item) => {
+      // Safely parse the date
+      const date = new Date(item.Date);
+      if (isNaN(date.getTime())) {
+        console.error('Invalid date:', item.Date);
+        return acc; // Skip this item if the date is invalid
+      }
+  
+      // Ensure firstDayOfYear is correctly handled as a Date object
+      const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
+      if (isNaN(firstDayOfYear.getTime())) {
+        console.error('Invalid first day of year for date:', item.Date);
+        return acc; // Skip this item if firstDayOfYear is invalid
+      }
+  
+      // Calculate the day of the year
+      const pastDaysOfYear = (date.getTime() - firstDayOfYear.getTime()) / 86400000;
+      const weekNumber = Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
+      const weekYear = `${date.getFullYear()}-W${weekNumber}`;
+  
+      if (!acc[weekYear]) {
+        acc[weekYear] = { Sales: 0, Commissions: 0 };
+      }
+  
+      const sales = parseFloat(item.Sales.replace('$', ''));
+      if (!isNaN(sales)) {
+        acc[weekYear].Sales += sales;
+      } else {
+        console.error('Invalid sales value:', item.Sales);
+      }
+  
+      const commissions = parseFloat(item['Est. Commissions'].replace('$', ''));
+      if (!isNaN(commissions)) {
+        acc[weekYear].Commissions += commissions;
+      } else {
+        console.error('Invalid commission value:', item['Est. Commissions']);
+      }
+  
+      return acc;
+    }, {});
+  
+    return Object.keys(grouped).map(key => ({
+      Date: key,
+      Sales: grouped[key].Sales,
+      Commissions: grouped[key].Commissions
+    }));
+  }
+  
+  
+  
+
+
 }
