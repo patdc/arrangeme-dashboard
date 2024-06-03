@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   public chart: any;
+  public monthComparisonChart: any;
   public startDate: string;
   public endDate: string;
 
@@ -99,6 +100,7 @@ export class DashboardComponent implements OnInit {
       this.filterDataByRouteParams(params['year'], params['month']);
     });
     this.createChart();
+    this.createMonthComparisonChart();
 
   }
 
@@ -245,11 +247,9 @@ export class DashboardComponent implements OnInit {
   }
 
   createChart() {
-
     const labels = this.filteredData.map(data => data.Date);
     const salesData = this.filteredData.map(data => Number(data.Sales.replace('$', ''))); 
     const commissionData = this.filteredData.map(data =>+data['Est. Commissions'].replace('$', '')); 
-    console.log(commissionData)
   
     this.chart = new Chart("MyChart", {
       type: 'bar',
@@ -291,8 +291,64 @@ export class DashboardComponent implements OnInit {
       this.chart.update();
     } else {
       this.createChart(); // Create the chart if it does not exist
+      this.createMonthComparisonChart();
     }
   }
+
+
+  createMonthComparisonChart() {
+    let currentMonth = new Date().getMonth() + 1;
+    let lastMonth = new Date().getMonth();
+
+    let currentMonthData = this.filterByMonth(this.csvData, currentMonth)
+    let lastMonthData = this.filterByMonth(this.csvData, lastMonth)
+    
+    const labels = this.filteredData.map(data => data.Date);
+    const current = currentMonthData.map(data =>+data['Est. Commissions'].replace('$', ''));
+    const last = lastMonthData.map(data =>+data['Est. Commissions'].replace('$', '')); 
+  
+    this.monthComparisonChart = new Chart("monthComparisonChart", {
+      type: 'bar',
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: 'Chart.js Line Chart'
+          }
+        }
+      },
+      data: {
+        labels: labels, 
+	       datasets: [
+          {
+            label: "Current month",
+            data: current,
+            backgroundColor: '#fbbf24'
+          },
+          {
+            label: "Last Month",
+            data: last,
+            backgroundColor: '#334155'
+
+          }  
+        ]
+      },
+   
+      
+    });
+  }
+
+
+
+
+
+
+
+
 
   filterDataByDateRange() {
     const start = new Date(this.startDate);
@@ -303,7 +359,7 @@ export class DashboardComponent implements OnInit {
       return itemDate >= start && itemDate <= end;
     });
   
-    this.updateChart(); // Call updateChart to refresh the chart with new data
+    this.updateChart();
   }
   
   onDateChange() {
@@ -311,107 +367,7 @@ export class DashboardComponent implements OnInit {
       this.filterDataByDateRange();
     }
   }
-  
-  //CORRIGER
-  groupByMonth(data: Product[]): any[] {
-    const grouped = data.reduce((acc, item) => {
-      // Parse the date safely
-      const date = new Date(item.Date);
-      if (isNaN(date.getTime())) {
-        console.error('Invalid date:', item.Date);
-        return acc; // Continue with the next iteration
-      }
-  
-      const month = date.getMonth(); // zero-indexed month
-      const year = date.getFullYear();
-      const monthYear = `${year}-${month + 1}`; // Formatting month as 'YYYY-MM'
-  
-      // Initialize the grouping object if it doesn't exist
-      if (!acc[monthYear]) {
-        acc[monthYear] = { Sales: 0, Commissions: 0 };
-      }
-  
-      // Safely parse and accumulate sales
-      const sales = parseFloat(item.Sales.replace('$', ''));
-      if (!isNaN(sales)) {
-        acc[monthYear].Sales += sales;
-      } else {
-        console.error('Invalid sales value:', item.Sales);
-      }
-  
-      // Safely parse and accumulate commissions
-      const commissions = parseFloat(item['Est. Commissions'].replace('$', ''));
-      if (!isNaN(commissions)) {
-        acc[monthYear].Commissions += commissions;
-      } else {
-        console.error('Invalid commission value:', item['Est. Commissions']);
-      }
-  
-      return acc;
-    }, {});
-  
-    // Map the grouped object to an array suitable for charting
-    return Object.keys(grouped).map(key => ({
-      Date: key,
-      Sales: grouped[key].Sales,
-      Commissions: grouped[key].Commissions
-    }));
-  }
 
-
-  //CORRIGER
-
-  groupByWeek(data: Product[]): any[] {
-    const grouped = data.reduce((acc, item) => {
-      // Safely parse the date
-      const date = new Date(item.Date);
-      if (isNaN(date.getTime())) {
-        console.error('Invalid date:', item.Date);
-        return acc; // Skip this item if the date is invalid
-      }
-  
-      // Ensure firstDayOfYear is correctly handled as a Date object
-      const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
-      if (isNaN(firstDayOfYear.getTime())) {
-        console.error('Invalid first day of year for date:', item.Date);
-        return acc; // Skip this item if firstDayOfYear is invalid
-      }
-  
-      // Calculate the day of the year
-      const pastDaysOfYear = (date.getTime() - firstDayOfYear.getTime()) / 86400000;
-      const weekNumber = Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
-      const weekYear = `${date.getFullYear()}-W${weekNumber}`;
-  
-      if (!acc[weekYear]) {
-        acc[weekYear] = { Sales: 0, Commissions: 0 };
-      }
-  
-      const sales = parseFloat(item.Sales.replace('$', ''));
-      if (!isNaN(sales)) {
-        acc[weekYear].Sales += sales;
-      } else {
-        console.error('Invalid sales value:', item.Sales);
-      }
-  
-      const commissions = parseFloat(item['Est. Commissions'].replace('$', ''));
-      if (!isNaN(commissions)) {
-        acc[weekYear].Commissions += commissions;
-      } else {
-        console.error('Invalid commission value:', item['Est. Commissions']);
-      }
-  
-      return acc;
-    }, {});
-  
-    return Object.keys(grouped).map(key => ({
-      Date: key,
-      Sales: grouped[key].Sales,
-      Commissions: grouped[key].Commissions
-    }));
-  }
-  
-  
-  
 
 
 }

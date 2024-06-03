@@ -8,7 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MotivationCardComponent } from './motivation-card/motivation-card.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-// import { TableModule } from 'primeng/table';
+import { CadenzaButtonModule } from '../ds/components';
 
 
 @NgModule({
@@ -18,8 +18,7 @@ import { SharedModule } from '../shared/shared.module';
     HeaderComponent,
     MotivationCardComponent,
   ],
-  imports: [CommonModule, FormsModule, FontAwesomeModule, RouterModule, SharedModule],
+  imports: [CommonModule, FormsModule, FontAwesomeModule, RouterModule, SharedModule, CadenzaButtonModule, FontAwesomeModule],
   providers: [],
-  bootstrap: [],
 })
 export class DashboardModule {}

@@ -1,0 +1,39 @@
+@import url('../ds/styles/_variables.scss');
+
+
+.card-wrapper {
+  display: flex;
+  margin-top: 25px;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid #BFCDE0;
+  padding: 25px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  // min-width: 400px;
+  width: 30%;
+  // min-height: 300px;
+
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary-color)
+  }
+
+  p {
+    font-size: 0.875rem;
+  }
+
+  &--button-wrapper {
+    display: flex;
+    margin-top: 25px;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+}
+

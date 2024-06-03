@@ -1,0 +1,527 @@
+@import '../../styles/_variables.scss';
+
+:root {
+  --cdz-button-filled--primary: var(--vialink-primary-500);
+  --cdz-button-filled--primary-hover: var(--vialink-primary-700);
+  --cdz-button-filled--primary-focus: var(--vialink-primary-700);
+  --cdz-button-filled--primary-disabled: var(--neutral-200);
+
+  --cdz-button-outlined--primary: var(--vialink-primary-25);
+  --cdz-button-outlined--primary-hover: var(--vialink-primary-50);
+  --cdz-button-outlined--primary-focus: var(--vialink-primary-25);
+  --cdz-button-outlined--primary-disabled: var(--neutral-200);
+
+  --cdz-button-text_only--primary: transparent;
+  --cdz-button-text_only--primary-hover: var(--vialink-primary-50);
+  --cdz-button-text_only--primary-focus: var(--vialink-primary-50);
+  --cdz-button-text_only--primary-disabled: var(--neutral-200);
+
+  --cdz-button-filled--secondary: var(--vialink-secondary-500);
+  --cdz-button-filled--secondary-hover: var(--vialink-secondary-700);
+  --cdz-button-filled--secondary-focus: var(--vialink-secondary-700);
+  --cdz-button-filled--secondary-disabled: var(--neutral-200);
+
+  --cdz-button-outlined--secondary: var(--vialink-secondary-25);
+  --cdz-button-outlined--secondary-hover: var(--vialink-secondary-25);
+  --cdz-button-outlined--secondary-focus: var(--vialink-secondary-25);
+  --cdz-button-outlined--secondary-disabled: var(--neutral-200);
+
+  --cdz-button-text_only--secondary: transparent;
+  --cdz-button-text_only--secondary-hover: var(--neutral-100);
+  --cdz-button-text_only--secondary-focus: transparent;
+  --cdz-button-text_only--secondary-disabled: transparent;
+
+  --cdz-button-filled--info: var(--info-500);
+  --cdz-button-filled--info-hover: var(--info-700);
+  --cdz-button-filled--info-focus: var(--info-700);
+  --cdz-button-filled--info-disabled: var(--neutral-200);
+
+  --cdz-button-outlined--info: var(--info-25);
+  --cdz-button-outlined--info-hover: var(--info-50);
+  --cdz-button-outlined--info-focus: var(--info-25);
+  --cdz-button-outlined--info-disabled: var(--neutral-200);
+
+  --cdz-button-text_only--info: transparent;
+  --cdz-button-text_only--info-hover: var(--info-50);
+  --cdz-button-text_only--info-focus: transparent;
+  --cdz-button-text_only--info-disabled: transparent;
+
+  --cdz-button-filled--warning: var(--warning-500);
+  --cdz-button-filled--warning-hover: var(--warning-600);
+  --cdz-button-filled--warning-focus: var(--warning-600);
+  --cdz-button-filled--warning-disabled: var(--neutral-200);
+
+  --cdz-button-outlined--warning: var(--warning-25);
+  --cdz-button-outlined--warning-hover: var(--warning-100);
+  --cdz-button-outlined--warning-focus: var(--warning-25);
+  --cdz-button-outlined--warning-disabled: var(--neutral-200);
+
+  --cdz-button-text_only--warning: transparent;
+  --cdz-button-text_only--warning-hover: var(--warning-25);
+  --cdz-button-text_only--warning-focus: transparent;
+  --cdz-button-text_only--warning-disabled: transparent;
+
+  --cdz-button-filled--success: var(--success-500);
+  --cdz-button-filled--success-hover: var(--success-700);
+  --cdz-button-filled--success-focus: var(--success-700);
+  --cdz-button-filled--success-disabled: var(--neutral-200);
+
+  --cdz-button-outlined--success: var(--success-25);
+  --cdz-button-outlined--success-hover: var(--success-50);
+  --cdz-button-outlined--success-focus: var(--success-25);
+  --cdz-button-outlined--success-disabled: var(--neutral-200);
+
+  --cdz-button-text_only--success: transparent;
+  --cdz-button-text_only--success-hover: var(--success-25);
+  --cdz-button-text_only--success-focus: transparent;
+  --cdz-button-text_only--success-disabled: transparent;
+
+  --cdz-button-filled--danger: var(--danger-500);
+  --cdz-button-filled--danger-hover: var(--danger-700);
+  --cdz-button-filled--danger-focus: var(--danger-700);
+  --cdz-button-filled--danger-disabled: var(--neutral-200);
+
+  --cdz-button-outlined--danger: var(--danger-25);
+  --cdz-button-outlined--danger-hover: var(--danger-50);
+  --cdz-button-outlined--danger-focus: var(--danger-25);
+  --cdz-button-outlined--danger-disabled: var(--neutral-200);
+
+  --cdz-button-text_only--danger: transparent;
+  --cdz-button-text_only--danger-hover: var(--danger-50);
+  --cdz-button-text_only--danger-focus: transparent;
+  --cdz-button-text_only--danger-disabled: transparent;
+}
+
+.wrapper {
+  & > span {
+    display: flex;
+    gap: 0.3rem;
+  }
+}
+
+.cdz-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: 0.2s;
+  border-style: none;
+
+  &.cdz-button--primary {
+    &.cdz-button--filled {
+      background-color: var(--cdz-button-filled--primary);
+      color: white;
+      &:hover {
+        background: var(--cdz-button-filled--primary-hover);
+        box-shadow: 0px 2px 4px -2px rgba(17, 12, 34, 0.12);
+      }
+      &:focus {
+        background: var(--cdz-button-filled--primary-focus);
+        box-shadow:
+          0px 0px 0px 4px rgba(230, 246, 246, 1),
+          0px 2px 4px 0px rgba(3, 165, 167, 0.12);
+      }
+      &:disabled {
+        background: var(--cdz-button-filled--primary-disabled);
+        border: none;
+        color: var(--neutral-400);
+        box-shadow: none;
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+
+    &.cdz-button--outlined {
+      background-color: var(--cdz-button-outlined--primary);
+      color: var(--vialink-primary-600);
+      border: 1px solid var(--vialink-primary-100);
+      &:hover {
+        background: var(--cdz-button-outlined--primary-hover);
+        box-shadow: 0px 2px 4px -2px rgba(17, 12, 34, 0.12);
+      }
+      &:focus {
+        background: var(--cdz-button-outlined--primary-focus);
+        box-shadow:
+          0px 0px 0px 4px rgba(230, 246, 246, 1),
+          0px 2px 4px 0px rgba(17, 12, 34, 0.12);
+      }
+      &:disabled {
+        background: var(--cdz-button-outlined--primary-disabled);
+        color: var(--neutral-400);
+        box-shadow: none;
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+
+    &.cdz-button--text_only {
+      background-color: var(--cdz-button-text_only--primary);
+      color: var(--vialink-primary-500);
+      &:hover {
+        color: var(--vialink-primary-700);
+        background: var(--cdz-button-text_only--primary-hover);
+      }
+      &:disabled {
+        background: transparent;
+        color: var(--neutral-400);
+        box-shadow: none;
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &.cdz-button--secondary {
+    &.cdz-button--filled {
+      background-color: var(--cdz-button-filled--secondary);
+      color: white;
+      &:hover {
+        background: var(--cdz-button-filled--secondary-hover);
+        box-shadow: 0px 0px 0px 3px rgba(230, 234, 236, 1);
+      }
+      &:focus {
+        background: var(--cdz-button-filled--secondary-focus);
+        box-shadow: 0px 0px 0px 3px rgba(230, 234, 236, 1);
+      }
+      &:disabled {
+        background: var(--cdz-button-filled--secondary-disabled);
+        border: none;
+        color: var(--neutral-400);
+        box-shadow: none;
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+
+    &.cdz-button--outlined {
+      background-color: transparent;
+      color: var(--vialink-secondary-500);
+      border: 1px solid var(--neutral-300);
+      &:hover {
+        background: var(--cdz-button-outlined--secondary-hover);
+        box-shadow: 0px 2px 4px -2px rgba(17, 12, 34, 0.12);
+      }
+      &:focus {
+        background: transparent;
+        box-shadow:
+          0px 0px 0px 4px rgba(236, 236, 237, 1),
+          0px 2px 4px 0px rgba(17, 12, 34, 0.12);
+      }
+      &:disabled {
+        background: var(--cdz-button-outlined--secondary-disabled);
+        color: var(--neutral-400);
+        box-shadow: none;
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+
+    &.cdz-button--text_only {
+      background-color: var(--cdz-button-text_only--primary);
+      color: var(--vialink-secondary-500);
+      &:hover {
+        background: var(--vialink-secondary-25);
+      }
+      &:disabled {
+        background: transparent;
+        color: var(--neutral-400);
+        box-shadow: none;
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &.cdz-button--success {
+    &.cdz-button--filled {
+      background-color: var(--cdz-button-filled--success);
+      color: white;
+      &:hover {
+        background: var(--cdz-button-filled--success-hover);
+        box-shadow: 0px 2px 4px -2px rgba(17, 12, 34, 0.12);
+      }
+      &:focus {
+        background: var(--cdz-button-filled--success-focus);
+        box-shadow:
+          0px 0px 0px 4px rgba(198, 241, 221, 1),
+          0px 2px 4px 0px rgba(17, 12, 34, 0.12);
+      }
+      &:disabled {
+        background: var(--cdz-button-filled--success-disabled);
+        border: none;
+        color: var(--neutral-400);
+        box-shadow: none;
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+
+    &.cdz-button--outlined {
+      background-color: var(--cdz-button-outlined--success);
+      color: var(--success-600);
+      border: 1px solid var(--success-100);
+      &:hover {
+        background: var(--cdz-button-outlined--success-hover);
+        box-shadow: 0px 2px 4px -2px rgba(17, 12, 34, 0.12);
+      }
+      &:focus {
+        background: var(--cdz-button-outlined--success-focus);
+        box-shadow:
+          0px 0px 0px 4px rgba(198, 241, 221, 1),
+          0px 2px 4px 0px rgba(17, 12, 34, 0.12);
+      }
+      &:disabled {
+        background: var(--cdz-button-outlined--success-disabled);
+        color: var(--neutral-400);
+        box-shadow: none;
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+
+    &.cdz-button--text_only {
+      background-color: var(--cdz-button-text_only--success);
+      color: var(--success-500);
+      &:hover {
+        background: var(--cdz-button-text_only--success-hover);
+      }
+      &:disabled {
+        background: transparent;
+        color: var(--neutral-400);
+        box-shadow: none;
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &.cdz-button--danger {
+    &.cdz-button--filled {
+      background-color: var(--cdz-button-filled--danger);
+      color: white;
+      &:hover {
+        background: var(--cdz-button-filled--danger-hover);
+        box-shadow: 0px 2px 4px -2px rgba(17, 12, 34, 0.12);
+      }
+      &:focus {
+        background: var(--cdz-button-filled--danger-focus);
+        box-shadow:
+          0px 0px 0px 4px rgba(255, 224, 224, 1),
+          0px 2px 4px 0px rgba(17, 12, 34, 0.12);
+      }
+      &:disabled {
+        background: var(--cdz-button-filled--danger-disabled);
+        border: none;
+        color: var(--neutral-400);
+        box-shadow: none;
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+
+    &.cdz-button--outlined {
+      background-color: var(--cdz-button-outlined--danger);
+      color: var(--danger-600);
+      border: 1px solid var(--danger-100);
+      &:hover {
+        background: var(--cdz-button-outlined--danger-hover);
+        box-shadow: 0px 2px 4px -2px rgba(17, 12, 34, 0.12);
+      }
+      &:focus {
+        background: var(--cdz-button-outlined--danger-focus);
+        box-shadow:
+          0px 0px 0px 4px rgba(255, 224, 224, 1),
+          0px 2px 4px 0px rgba(17, 12, 34, 0.12);
+      }
+      &:disabled {
+        background: var(--cdz-button-outlined--danger-disabled);
+        color: var(--neutral-400);
+        box-shadow: none;
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+
+    &.cdz-button--text_only {
+      background-color: var(--cdz-button-text_only--danger);
+      color: var(--danger-500);
+      &:hover {
+        color: var(--danger-700);
+        background: var(--cdz-button-text_only--danger-hover);
+      }
+      &:disabled {
+        background: transparent;
+        color: var(--neutral-400);
+        box-shadow: none;
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &.cdz-button--warning {
+    &.cdz-button--filled {
+      background-color: var(--cdz-button-filled--warning);
+      color: var(--vialink-secondary-500);
+      &:hover {
+        background: var(--cdz-button-filled--warning-hover);
+        box-shadow: 0px 2px 4px -2px rgba(17, 12, 34, 0.12);
+      }
+      &:focus {
+        background: var(--cdz-button-filled--warning-focus);
+        box-shadow:
+          0px 0px 0px 4px rgba(255, 236, 186, 1),
+          0px 2px 4px 0px rgba(17, 12, 34, 0.12);
+      }
+      &:disabled {
+        background: var(--cdz-button-filled--warning-disabled);
+        border: none;
+        color: var(--neutral-400);
+        box-shadow: none;
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+
+    &.cdz-button--outlined {
+      background-color: var(--cdz-button-outlined--warning);
+      color: var(--warning-700);
+      border: 1px solid var(--warning-100);
+      &:hover {
+        background: var(--cdz-button-outlined--warning-hover);
+        box-shadow: 0px 2px 4px -2px rgba(17, 12, 34, 0.12);
+      }
+      &:focus {
+        background: var(--cdz-button-outlined--warning-focus);
+        box-shadow:
+          0px 0px 0px 4px rgba(255, 236, 186, 1),
+          0px 2px 4px 0px rgba(17, 12, 34, 0.12);
+      }
+      &:disabled {
+        background: var(--cdz-button-outlined--warning-disabled);
+        color: var(--neutral-400);
+        box-shadow: none;
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+
+    &.cdz-button--text_only {
+      background-color: var(--cdz-button-text_only--warning);
+      color: var(--warning-600);
+      &:hover {
+        background: var(--cdz-button-text_only--warning-hover);
+      }
+      &:disabled {
+        background: transparent;
+        color: var(--neutral-400);
+        box-shadow: none;
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &.cdz-button--info {
+    &.cdz-button--filled {
+      background-color: var(--cdz-button-filled--info);
+      color: white;
+      &:hover {
+        background: var(--cdz-button-filled--info-hover);
+        box-shadow: 0px 2px 4px -2px rgba(17, 12, 34, 0.12);
+      }
+      &:focus {
+        background: var(--cdz-button-filled--info-focus);
+        box-shadow:
+          0px 0px 0px 4px rgba(230, 246, 246, 1),
+          0px 2px 4px 0px rgba(3, 165, 167, 0.12);
+      }
+      &:disabled {
+        background: var(--cdz-button-filled--info-disabled);
+        border: none;
+        color: var(--neutral-400);
+        box-shadow: none;
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+
+    &.cdz-button--outlined {
+      background-color: var(--cdz-button-outlined--info);
+      color: var(--info-600);
+      border: 1px solid var(--info-100);
+      &:hover {
+        color: var(--info-700);
+        background: var(--cdz-button-outlined--info-hover);
+      }
+      &:focus {
+        color: var(--info-500);
+        background: var(--cdz-button-outlined--info-focus);
+        box-shadow:
+          0px 0px 0px 3px rgba(194, 226, 255, 1),
+          0px 2px 4px 0px rgba(17, 12, 34, 0.12);
+      }
+      &:disabled {
+        background: var(--cdz-button-outlined--info-disabled);
+        color: var(--neutral-400);
+        box-shadow: none;
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+
+    &.cdz-button--text_only {
+      background-color: var(--cdz-button-text_only--info);
+      color: var(--info-500);
+      &:hover {
+        color: var(--info-700);
+        background: var(--cdz-button-text_only--info-hover);
+      }
+      &:disabled {
+        background: transparent;
+        color: var(--neutral-400);
+        box-shadow: none;
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &.cdz-button--xs {
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 16px;
+    gap: 4px;
+    padding: 4px 8px;
+  }
+
+  &.cdz-button--sm {
+    font-size: 12px;
+    line-height: 16px;
+    gap: 6px;
+    padding: 8px 10px;
+  }
+
+  &.cdz-button--md {
+    font-size: 14px;
+    line-height: 24px;
+    gap: 8px;
+    padding: 8px 12px;
+  }
+
+  &.cdz-button--lg {
+    font-size: 16px;
+    line-height: 24px;
+    gap: 10px;
+    padding: 12px 16px;
+  }
+  &.cdz-button--xl {
+    font-size: 18px;
+    line-height: 24px;
+    gap: 12px;
+    padding: 16px;
+  }
+}

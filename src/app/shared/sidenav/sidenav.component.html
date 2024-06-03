@@ -8,13 +8,13 @@
     <li *ngFor="let item of menuSidebar" #itemEl routerLinkActive="active">
       <div *ngIf="item.sub_menu.length == 0" class="dropdown-title">
         <a [routerLink]="[item.link]">
-          <fa-icon [icon]="item.icon"></fa-icon>
+          <fa-icon class="left-icon" [icon]="item.icon"></fa-icon>
           <span class="link_name">{{ item.link_name }}</span>
         </a>
       </div>
       <div *ngIf="item.sub_menu.length > 0" class="dropdown-title" (click)="showSubmenu(itemEl)">
         <a>
-          <fa-icon [icon]="item.icon"></fa-icon>
+          <fa-icon class="left-icon" [icon]="item.icon"></fa-icon>
           <span class="link_name">{{ item.link_name }}</span>
         </a>
         <div class="dropdown-icon">

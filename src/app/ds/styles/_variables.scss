@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+  --font-family: Lato, Helvetica Neue, Helvetica, Arial, sans-serif;
+  --primary-color: #1D1F30;
+  --green-vialink: #1D1F30;
+  --dark-grey: rgb(72, 86, 89);
+  --dark-grey: #1D1F30;
+
+  --vialink-primary-25: rgb(241, 241, 246);
+  --vialink-primary-50: rgb(212, 213, 229);
+  --vialink-primary-100: rgb(183, 186, 211);
+  --vialink-primary-200: rgb(154, 158, 194);
+  --vialink-primary-300: rgb(125, 130, 176);
+  --vialink-primary-400: rgb(96, 103, 159);
+  --vialink-primary-500: rgb(79, 84, 130);
+  --vialink-primary-600: rgb(61, 65, 101);
+  --vialink-primary-700: rgb(26, 28, 43);
+  --vialink-primary-800: rgb(26, 28, 43);
+  --vialink-primary-900: rgb(9, 9, 14);
+
+  --vialink-secondary-25: rgb(243, 245, 246);
+  --vialink-secondary-50: rgb(230, 234, 236);
+  --vialink-secondary-100: rgb(178, 189, 196);
+  --vialink-secondary-200: rgb(140, 157, 168);
+  --vialink-secondary-300: rgb(88, 113, 128);
+  --vialink-secondary-400: rgb(55, 85, 103);
+  --vialink-secondary-500: rgb(5, 43, 65);
+  --vialink-secondary-600: rgb(5, 39, 59);
+  --vialink-secondary-700: rgb(4, 31, 46);
+  --vialink-secondary-800: rgb(3, 24, 36);
+  --vialink-secondary-900: rgb(2, 18, 27);
+
+  --neutral-25: rgb(240, 241, 243);
+  --neutral-50: rgb(230, 234, 236);
+  --neutral-100: rgb(242, 244, 247);
+  --neutral-200: rgb(234, 236, 240);
+  --neutral-300: rgb(208, 213, 221);
+  --neutral-400: rgb(152, 162, 179);
+  --neutral-500: rgb(102, 112, 133);
+  --neutral-600: rgb(71, 84, 103);
+  --neutral-700: rgb(72, 80, 94);
+  --neutral-800: rgb(29, 41, 57);
+  --neutral-900: rgb(16, 24, 40);
+
+  --info-25: rgb(245, 250, 255);
+  --info-50: rgb(232, 242, 254);
+  --info-100: rgb(182, 215, 251);
+  --info-200: rgb(147, 196, 249);
+  --info-300: rgb(98, 169, 246);
+  --info-400: rgb(67, 153, 245);
+  --info-500: rgb(20, 127, 242);
+  --info-600: rgb(18, 116, 220);
+  --info-700: rgb(14, 90, 172);
+  --info-800: rgb(11, 70, 133);
+  --info-900: rgb(8, 53, 102);
+
+  --success-25: rgb(243, 253, 248);
+  --success-50: rgb(234, 246, 236);
+  --success-100: rgb(188, 228, 197);
+  --success-200: rgb(156, 215, 169);
+  --success-300: rgb(111, 196, 130);
+  --success-400: rgb(83, 185, 106);
+  --success-500: rgb(40, 167, 69);
+  --success-600: rgb(36, 152, 63);
+  --success-700: rgb(28, 119, 49);
+  --success-800: rgb(22, 92, 38);
+  --success-900: rgb(17, 70, 29);
+
+  --warning-25: rgb(255, 249, 230);
+  --warning-50: rgb(255, 249, 230);
+  --warning-100: rgb(255, 236, 178);
+  --warning-200: rgb(255, 226, 141);
+  --warning-300: rgb(255, 213, 89);
+  --warning-400: rgb(255, 205, 57);
+  --warning-500: rgb(255, 193, 7);
+  --warning-600: rgb(232, 176, 6);
+  --warning-700: rgb(181, 137, 5);
+  --warning-800: rgb(140, 106, 4);
+  --warning-900: rgb(107, 81, 3);
+
+  --danger-25: rgb(255, 249, 249);
+  --danger-50: rgb(252, 235, 236);
+  --danger-100: rgb(244, 192, 197);
+  --danger-200: rgb(239, 162, 169);
+  --danger-300: rgb(232, 120, 130);
+  --danger-400: rgb(227, 93, 106);
+  --danger-500: rgb(220, 53, 69);
+  --danger-600: rgb(200, 48, 63);
+  --danger-700: rgb(156, 38, 49);
+  --danger-800: rgb(121, 29, 38);
+  --danger-900: rgb(92, 22, 29);
+
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  --spacing-32: 8rem;
+  --spacing-40: 10rem;
+  --spacing-48: 12rem;
+  --spacing-56: 14rem;
+  --spacing-64: 16rem;
+
+  --shadow-xs: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  --shadow-sm: 0px 1px 2px 0px rgba(16, 24, 40, 0.06), 0px 1px 3px 0px rgba(16, 24, 40, 0.1);
+  --shadow-md: 0px 4px 8px -2px rgba(16, 24, 40, 0.1), 0px 2px 4px -2px rgba(16, 24, 40, 0.06);
+  --shadow-lg: 0px 4px 6px -2px rgba(16, 24, 40, 0.03), 0px 12px 16px -4px rgba(16, 24, 40, 0.08);
+  --shadow-xl: 0px 8px 8px -4px rgba(16, 24, 40, 0.03), 0px 20px 24px -4px rgba(16, 24, 40, 0.08);
+  --shadow-2xl: 0px 24px 48px -12px rgba(16, 24, 40, 0.18);
+  --shadow-3xl: 0px 32px 64px -12px rgba(16, 24, 40, 0.14);
+
+  --font-size-h1: 2rem;
+  --font-size-h2: 1.75rem;
+  --font-size-h3: 1.625rem;
+  --font-size-h4: 1.5rem;
+  --font-size-h5: 1.25rem;
+  --font-size-h6: 1.25rem;
+
+  --font-size-body-xl: 1.25rem;
+  --font-size-body-lg: 1.125rem;
+  --font-size-body-md: 1rem;
+  --font-size-body-sm: 0.875rem;
+  --font-size-body-xs: 0.813rem;
+
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+}

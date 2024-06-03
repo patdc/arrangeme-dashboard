@@ -20,30 +20,23 @@
   <!-- Right Side -->
   <app-header [currentMonthAndYear]="currentMonthAndYear" [daysRemaining]="daysRemaining" [countriesList]="countriesList" [years]="years" (fileUploaded)="handleFileUpload($event)" (yearChanged)="filterByYear($event)">
     ></app-header>
-  <!-- {{csvData.length}} -->
-  <div *ngIf="csvData.length === 0">
+
+  <!-- <div>
     <no-sales></no-sales>
-  </div>
-  <div class="flex flex-col flex-grow bg-slate-200 p-12">
-
-
-
-
+  </div> -->
+  <div class="container flex flex-col flex-grow p-12">
     <div>
       <h1 class="text-2xl mb-2 font-bold text-slate-700">Visão Global</h1>
     </div>
     <div class="flex flex-wrap gap-4">
-      <app-primary-card class="w-full md:flex-1" [label]="'Comissões'" [description]="'(No seu bolso)'" [value]="totalCommissions | currency : 'USD'" [icon]="faDollarSign"></app-primary-card>
-      <app-primary-card class="w-full md:flex-1" [label]="'Vendas'" [description]="'Partituras vendidas'" [value]="totalQuantity" [icon]="faBagShopping"></app-primary-card>
-      <app-primary-card class="w-full md:flex-1" [label]="'Vendas'" [description]="'Faturamento do site'" [value]="totalSales | currency : 'USD'" [icon]="faHandHoldingDollar"></app-primary-card>
-      <app-primary-card class="w-full md:flex-1" [label]="'Reembolsos'" [description]="'Partituras reembolsadas'" [value]="totalRefunds | currency : 'USD'" [icon]="faMoneyBillTransfer"></app-primary-card>
+      <app-primary-card class="w-full md:flex-1" [label]="'Comissões'" [value]="totalCommissions | currency : 'USD'" [icon]="faDollarSign"></app-primary-card>
+      <app-primary-card class="w-full md:flex-1" [label]="'Quantidade'" [value]="totalQuantity" [icon]="faBagShopping"></app-primary-card>
+      <app-primary-card class="w-full md:flex-1" [label]="'Vendas Totais'" [value]="totalSales | currency : 'USD'" [icon]="faHandHoldingDollar"></app-primary-card>
+      <app-primary-card class="w-full md:flex-1" [label]="'Reembolsos'" [value]="totalRefunds | currency : 'USD'" [icon]="faMoneyBillTransfer"></app-primary-card>
     </div>
 
 
     <div class="border-t border-slate-300 my-8"></div>
-
-
-
     <div>
       <h1 class="text-2xl mb-2 font-bold text-slate-700">Stats</h1>
     </div>
@@ -51,9 +44,12 @@
       <input type="date" [(ngModel)]="startDate" (change)="onDateChange()">
       <input type="date" [(ngModel)]="endDate" (change)="onDateChange()">
     </div>
-    <div class="chart-container">
+    <!-- <div class="chart-container">
       <canvas id="MyChart">{{ chart }}</canvas>
-      <!-- <canvas id="MyChart"></canvas> -->
+    </div> -->
+
+    <div class="chart-container">
+      <canvas id="monthComparisonChart">{{ monthComparisonChart }}</canvas>
     </div>
 
 
@@ -71,7 +67,7 @@
         <h2 class="text-lg text-slate-500 mb-4">
           Que que o povo tá gostando de tocar (obviamente não é oboé)
         </h2>
-        {{ mostUsedFormats | json}}
+
         <div class="container mx-auto">
           <div *ngFor="let item of mostUsedFormats.slice(0, displayCount)" class="mb-2 bg-white shadow-lg rounded-lg p-4 flex justify-between">
             <span class="text-slate-700 font-semibold">{{ item.format }}</span>

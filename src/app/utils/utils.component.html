@@ -1,0 +1,51 @@
+<div>
+  <h1 class="text-3xl text-slate-700 font-bold">Utilitários</h1>
+  Selecione uma ferramenta para te ajudar no seu dia-a-dia
+</div>
+
+
+<div>
+  Posso vender essa partitura de domínio público?
+  <input type="text">
+  <p>
+    <a href="https://www.arrangeme.com/images/where-to-include-credits2.png">
+      Veja onde inserir as informações de copyright
+    </a>
+  </p>
+</div>
+
+
+<div class="card-wrapper">
+  <div class="card" *ngFor="let util of utils">
+    <h1>{{util.title}}</h1>
+    <p>{{util.description}}</p>
+    <div class="card--button-wrapper">
+
+      <a href="{{util.link}}" target="_blank">
+        <button cdzButton [variant]="'filled'" [size]="'md'">
+          {{util.label}} <fa-icon [icon]="faSquareArrowUpRight"></fa-icon>
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div>
+  <h1 class="text-2xl text-slate-700 font-bold">Fontes de Partitura</h1>
+</div>
+
+
+<div class="card-wrapper">
+  <div class="card" *ngFor="let util of fontesDePartitura">
+    <h1>{{util.title}}</h1>
+    <p>{{util.description}}</p>
+    <div class="card--button-wrapper">
+
+      <a href="{{util.link}}" target="_blank">
+        <button cdzButton [variant]="'filled'" [size]="'md'">
+          {{util.label}} <fa-icon [icon]="faSquareArrowUpRight"></fa-icon>
+        </button>
+      </a>
+    </div>
+  </div>
+</div>

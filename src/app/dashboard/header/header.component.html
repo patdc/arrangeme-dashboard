@@ -14,9 +14,10 @@
       >
         Download report
       </button> -->
-      <button (click)="fileInput.click()" class="bg-blue-500  text-white px-4 py-2 rounded-md w-auto hover:bg-blue-400">
-
-        Upload a CSV file
+      <!-- <button cdzButton (click)="fileInput.click()" class="button  text-white px-4 py-2 rounded-md w-auto"> -->
+      <button cdzButton (click)="fileInput.click()" [size]="'lg'" [variant]="'filled'" [color]="'primary'">
+        Upload do arquivo de vendas
+        <fa-icon [icon]="faUpload"></fa-icon>
       </button>
     </div>
   </div>

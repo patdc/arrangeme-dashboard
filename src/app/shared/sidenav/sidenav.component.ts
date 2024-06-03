@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faChevronDown, faHome, faLightbulb } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faHammer, faHome, faLightbulb, faMusic } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'sidenav',
@@ -12,6 +12,8 @@ export class SidenavComponent implements OnInit {
   faHome = faHome
   faLightBulb = faLightbulb
   faChevronDown = faChevronDown;
+  faHammer = faHammer;
+  faMusic = faMusic;
 
   menuSidebar = [
     {
@@ -29,10 +31,6 @@ export class SidenavComponent implements OnInit {
           link_name: 'Trends',
           link: '/trends',
         },
-        {
-          link_name: 'Canais Dark',
-          link: '/canais-dark',
-        },
       ],
     },
 
@@ -42,23 +40,20 @@ export class SidenavComponent implements OnInit {
       icon: faHome,
       sub_menu: [
         {
-          link_name: 'UI Face',
-          link: '/ui-face',
+          link_name: 'Piano tutorials',
+          link: '/dark-channel',
         },
         {
-          link_name: 'Pigments',
-          link: '/pigments',
+          link_name: 'Sheet Music',
+          link: '/dark-channel-sm',
         },
-        {
-          link_name: 'Box Icons',
-          link: '/box-icons',
-        },
+
       ],
     },
     {
-      link_name: 'Explore',
-      link: '/explore',
-      icon: faHome,
+      link_name: 'Utilitários',
+      link: '/utils',
+      icon: faHammer,
       sub_menu: [],
     },
   
@@ -72,7 +67,7 @@ export class SidenavComponent implements OnInit {
       {
         link_name: '2024',
         link: '/2024',
-        icon: faHome,
+        icon: faMusic,
         sub_menu: [],
       },
     )

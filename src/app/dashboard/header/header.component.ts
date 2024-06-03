@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,8 @@ export class HeaderComponent {
 
   @Output() fileUploaded = new EventEmitter<any>();
   @Output() yearChanged = new EventEmitter<any>();
+
+  faUpload = faUpload;
 
   handleFileUpload(event: any) {
     this.fileUploaded.emit(event);
