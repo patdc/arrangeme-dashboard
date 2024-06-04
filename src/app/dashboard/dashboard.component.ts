@@ -31,10 +31,7 @@ export class DashboardComponent implements OnInit {
   public endDate: string;
 
   public groupBy:string;
-
   
-
-
   csvData: Product[];
   filteredData: Product[] = [];
 
@@ -136,6 +133,7 @@ export class DashboardComponent implements OnInit {
         },
       });
     }
+
   }
 
   get currentMonthAndYear(): string {

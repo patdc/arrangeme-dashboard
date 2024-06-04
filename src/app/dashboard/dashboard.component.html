@@ -73,12 +73,14 @@
             <span class="text-slate-700 font-semibold">{{ item.format }}</span>
             <span class="text-sky-400">{{ item.count }}</span>
           </div>
-          <button *ngIf="displayCount < mostUsedFormats.length" (click)="onSeeMore()" class="mt-4 bg-sky-900 rounded-full text-white py-2 px-4 mr-2">
-            Ver mais...
-          </button>
-          <button *ngIf="displayCount > initialDisplayCount" (click)="onShowLess()" class="mt-4 bg-slate-500 rounded-full text-white py-2 px-4">
-            Ver menos
-          </button>
+          <div class="flex gap-2">
+            <button *ngIf="displayCount < mostUsedFormats.length" (click)="onSeeMore()" cdzButton [variant]="'filled'" [size]="'sm'">
+              Ver mais...
+            </button>
+            <button *ngIf="displayCount > initialDisplayCount" (click)="onShowLess()" cdzButton [variant]="'outlined'" [size]="'sm'">
+              Ver menos
+            </button>
+          </div>
         </div>
       </div>
 
@@ -99,12 +101,15 @@
               {{ item.comissions | currency : "USD" : "symbol" : "1.2-2" }}
             </span>
           </div>
-          <button *ngIf="displayCount < salesAndQuantityByCountryData.length" (click)="onSeeMore()" class="mt-4 bg-sky-900 rounded-full text-white py-2 px-4 mr-2">
-            Ver mais...
-          </button>
-          <button *ngIf="displayCount > initialDisplayCount" (click)="onShowLess()" class="mt-4 bg-slate-500 text-white py-2 px-4 rounded-full">
-            Ver menos
-          </button>
+          <div class="flex gap-2">
+
+            <button *ngIf="displayCount < salesAndQuantityByCountryData.length" (click)="onSeeMore()" cdzButton [variant]="'filled'" [size]="'sm'">
+              Ver mais...
+            </button>
+            <button *ngIf="displayCount > initialDisplayCount" (click)="onShowLess()" cdzButton [variant]="'outlined'" [size]="'sm'">
+              Ver menos
+            </button>
+          </div>
         </div>
       </div>
     </div>

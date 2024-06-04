@@ -72,17 +72,11 @@ export class SidenavComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.menuSidebar.push(
-      {
-        link_name: '2024',
-        link: '/2024',
-        icon: faMusic,
-        sub_menu: [],
-      },
-    )
   }
 
   showSubmenu(itemEl: HTMLElement) {
     itemEl.classList.toggle('showMenu');
   }
+
+
 }
