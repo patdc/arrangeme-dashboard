@@ -18,7 +18,7 @@
   </div> -->
 
   <!-- Right Side -->
-  <app-header [currentMonthAndYear]="currentMonthAndYear" [daysRemaining]="daysRemaining" [countriesList]="countriesList" [years]="years" (fileUploaded)="handleFileUpload($event)" (yearChanged)="filterByYear($event)">
+  <app-header [currentMonthAndYear]="currentMonthAndYear" [daysRemaining]="daysRemaining" [countriesList]="countriesList" [years]="years" (fileUploaded)="handleFileUpload($event)" (eraseEvent)="eraseContent($event)" (yearChanged)="filterByYear($event)">
     ></app-header>
 
   <!-- <div>

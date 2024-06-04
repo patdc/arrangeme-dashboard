@@ -1,0 +1,37 @@
+<div class="card" *ngFor="let trend of trends">
+  <h1>{{trend.title}}</h1>
+  <p>{{countryCode}}</p>
+  <div class="card--button-wrapper">
+
+    <a href="{{trend.pastHour.link}}" target="_blank">
+      <button cdzButton [variant]="'outlined'" [size]="'sm'">
+        {{trend.pastHour.label}} <fa-icon [icon]="faSquareArrowUpRight"></fa-icon>
+      </button>
+    </a>
+    <a href="{{trend.pastDay.link}}" target="_blank">
+      <button cdzButton [variant]="'outlined'" [size]="'sm'">
+        {{trend.pastDay.label}} <fa-icon [icon]="faSquareArrowUpRight"></fa-icon>
+      </button>
+    </a>
+    <a href="{{trend.past7days.link}}" target="_blank">
+      <button cdzButton [variant]="'outlined'" [size]="'sm'">
+        {{trend.past7days.label}} <fa-icon [icon]="faSquareArrowUpRight"></fa-icon>
+      </button>
+    </a>
+    <a href="{{trend.past30days.link}}" target="_blank">
+      <button cdzButton [variant]="'outlined'" [size]="'sm'">
+        {{trend.past30days.label}} <fa-icon [icon]="faSquareArrowUpRight"></fa-icon>
+      </button>
+    </a>
+    <a href="{{trend.past90days.link}}" target="_blank">
+      <button cdzButton [variant]="'outlined'" [size]="'sm'">
+        {{trend.past90days.label}} <fa-icon [icon]="faSquareArrowUpRight"></fa-icon>
+      </button>
+    </a>
+    <a href="{{trend.past12months.link}}" target="_blank">
+      <button cdzButton [variant]="'outlined'" [size]="'sm'">
+        {{trend.past12months.label}} <fa-icon [icon]="faSquareArrowUpRight"></fa-icon>
+      </button>
+    </a>
+  </div>
+</div>

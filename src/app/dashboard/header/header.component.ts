@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { faUpload } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faUpload } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -14,8 +14,10 @@ export class HeaderComponent {
 
   @Output() fileUploaded = new EventEmitter<any>();
   @Output() yearChanged = new EventEmitter<any>();
+  @Output() eraseEvent = new EventEmitter<boolean>();
 
   faUpload = faUpload;
+  faTrash = faTrash;
 
   handleFileUpload(event: any) {
     this.fileUploaded.emit(event);
@@ -25,5 +27,9 @@ export class HeaderComponent {
     const select = event.target as HTMLSelectElement;
     const selectedYear = Number(select.value);
     this.yearChanged.emit(selectedYear);
+  }
+
+  erase(): void {
+    this.eraseEvent.emit(true);
   }
 }

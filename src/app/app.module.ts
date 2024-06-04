@@ -8,10 +8,11 @@ import { SharedModule } from './shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { CadenzaButtonModule } from './ds/components';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, DashboardModule, RouterModule, SharedModule, CommonModule, CadenzaButtonModule, FontAwesomeModule],
+  imports: [BrowserModule, AppRoutingModule, DashboardModule, RouterModule, SharedModule, CommonModule, CadenzaButtonModule, FontAwesomeModule, ReactiveFormsModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

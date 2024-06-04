@@ -5,17 +5,14 @@
   </div>
 
   <div class="flex">
-    <div class="ml-6">
+    <div class="ml-6 flex gap-2">
       <input type="file" #fileInput style="display: none" (change)="handleFileUpload($event)" />
+      <button cdzButton (click)="erase()" [size]="'md'" [variant]="'outlined'" [color]="'primary'">
+        Apagar conteúdo
+        <fa-icon [icon]="faTrash"></fa-icon>
+      </button>
 
-      <!-- TODO: implementar relatório com export em PDF  -->
-      <!-- <button
-        class="border-sky-900 border-2 text-sky-900 font-bold px-4 py-2 w-auto rounded-full mr-2 hover:bg-sky-800 hover:text-white"
-      >
-        Download report
-      </button> -->
-      <!-- <button cdzButton (click)="fileInput.click()" class="button  text-white px-4 py-2 rounded-md w-auto"> -->
-      <button cdzButton (click)="fileInput.click()" [size]="'lg'" [variant]="'filled'" [color]="'primary'">
+      <button cdzButton (click)="fileInput.click()" [size]="'md'" [variant]="'filled'" [color]="'primary'">
         Upload do arquivo de vendas
         <fa-icon [icon]="faUpload"></fa-icon>
       </button>

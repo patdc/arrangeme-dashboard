@@ -1,31 +1,13 @@
-@import url('../ds/styles/_variables.scss');
-
-.card {
-  background-color: white;
-  border-radius: 4px;
-  border: 1px solid #BFCDE0;
-  padding: 25px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  min-width: 400px;
-  max-width: 400px;
-  min-height: 300px;
-  margin: 10px;
-
-  h1 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--primary-color)
-  }
-
-  p {
-    font-size: 0.875rem;
-  }
-
-  &--button-wrapper {
-    display: flex;
-    margin-top: 25px;
-    gap: 5px;
-    flex-wrap: wrap;
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 25px;
+  gap: 15px;
+  width: 100%;
+  margin-bottom: 50px;
+  trends-card {
+    width: 30%; /* Each card takes up 30% of the container width */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+    margin: 10px; /* Optional: Adds some space between the cards */
   }
 }
-

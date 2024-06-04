@@ -52,9 +52,18 @@ export class SidenavComponent implements OnInit {
     },
     {
       link_name: 'Utilitários',
-      link: '/utils',
+      link: 'null',
       icon: faHammer,
-      sub_menu: [],
+      sub_menu: [
+        {
+          link_name: 'Edição de Partituras',
+          link: '/utils',
+        },
+        {
+          link_name: 'Design/Produtividade',
+          link: '/utils-design',
+        },
+      ],
     },
   
    

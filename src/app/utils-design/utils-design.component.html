@@ -1,0 +1,23 @@
+<div class="mb-8">
+  <h1 class="text-3xl text-slate-700 font-bold">Utilitários de Design e Produtividade</h1>
+  <hr class="my-4">
+</div>
+
+<div>
+  <h1 class="text-2xl text-slate-700 font-bold">Design e Produtividade</h1>
+</div>
+
+<div class="card-wrapper">
+  <div class="card" *ngFor="let util of utils">
+    <h1>{{util.title}}</h1>
+    <p>{{util.description}}</p>
+    <div class="card--button-wrapper">
+
+      <a href="{{util.link}}" target="_blank">
+        <button cdzButton [variant]="'filled'" [size]="'md'">
+          {{util.label}} <fa-icon [icon]="faSquareArrowUpRight"></fa-icon>
+        </button>
+      </a>
+    </div>
+  </div>
+</div>

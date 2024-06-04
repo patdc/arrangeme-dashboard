@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {  faSquareArrowUpRight } from '@fortawesome/free-solid-svg-icons';
+import { FormControl, FormGroup } from '@angular/forms';
+import {  faCircleInfo, faSearch, faSquareArrowUpRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-utils',
@@ -8,31 +9,14 @@ import {  faSquareArrowUpRight } from '@fortawesome/free-solid-svg-icons';
 })
 export class UtilsComponent implements OnInit {
   faSquareArrowUpRight = faSquareArrowUpRight;
+  faSearch = faSearch;
+  faCircleInfo = faCircleInfo;
+
+  searchForm = new FormGroup({
+    query: new FormControl('')
+  });
+  
   utils = [
-    {
-        title: 'Canva',
-        description: 'Utilitário de Design para criar capas e artes visuais para canal youtube e redes sociais',
-        link: '',
-        label: 'Acessar'
-    },
-    {
-        title: 'Figma',
-        description: 'Utilitário de Design para criar capas e artes visuais para canal youtube e redes sociais',
-        link: '',
-        label: 'Acessar'
-    },
-    {
-        title: 'Notion',
-        description: 'Utilitário de organização para automatizar seu segundo cérebro',
-        link: '',
-        label: 'Acessar'
-    },
-    {
-        title: 'Google Fonts',
-        description: 'Utilitário para baixar fontes seguras',
-        link: '',
-        label: 'Acessar'
-    },
     {
         title: 'Plugins para Sibelius - Oficial',
         description: 'Plugins oficiais do Sibelius',
@@ -57,12 +41,6 @@ export class UtilsComponent implements OnInit {
         link: 'https://www.modartt.com/',
         label: 'Acessar'
     },
-    {
-        title: 'Formatos de papel',
-        description: 'Utilitário com informações sobre formatos de papel',
-        link: 'https://papersizes.io/?ref=designeresourc.es',
-        label: 'Acessar'
-    },
 
   ];
 
@@ -85,4 +63,83 @@ export class UtilsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  encodeForURL(query) {
+    let encoded = encodeURIComponent(query);
+    encoded = encoded.replace(/%20/g, '+');
+    return 'q=' + encoded;
+  }
+
+  onSubmit() {
+    const query = this.searchForm.value.query;
+    window.open(`https://www.arrangeme.com/search?q=${encodeURIComponent(query)}&sort=arrangements_desc`, '_blank')
+  }
 }
+
+
+
+// Canva
+// www.canva.com/
+
+// FontPair
+// www.fontpair.co/
+
+// FontJoy
+// www.fontjoy.com/
+
+// Typespiration
+// www.typespiration.com/
+
+// Typotheque
+// www.typotheque.com/
+
+// FemmeBot
+// www.femmebot.github.io/
+
+// Typ.io
+// www.typ.io/
+
+// Mix Font
+// www.mixfont.com/
+
+// Designs.ai
+// www.designs.ai/fonts/
+
+// TypeWolf
+// www.typewolf.com/
+
+// Type Connection
+// www.typeconnection.com/
+
+// Fontspring
+// www.fontspring.com/
+
+// Adobe Fonts
+// www.fonts.adobe.com/
+
+// Just My Type
+// www.justmytype.co/
+
+// Fonts in Use
+// www.fontsinuse.com/
+
+// Hello Happy
+// www.hellohappy.org/
+
+// Monotype
+// www.monotype.com/fonts
+
+// Figma Google Fonts
+// www.figma.com/google-fonts/
+
+// Type-scale
+// www.type-scale.com/
+
+// Modular Scale
+// www.modularscale.com/
+
+// Archetype App
+// www.archetypeapp.com/
+
+// Classic Typetester
+// www.classic.typetester.org/

@@ -106,9 +106,7 @@ export class DashboardComponent implements OnInit {
 
   loadCsvData(): void {
     this.csvData = JSON.parse(localStorage.getItem('csvData') || '[]');
-    console.log(this.csvData)
-    this.calculateMetrics(this.csvData);
-
+      this.calculateMetrics(this.csvData);
     this.years = this.getYearsAvailable(this.csvData);
   }
 
@@ -342,14 +340,6 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-
-
-
-
-
-
-
-
   filterDataByDateRange() {
     const start = new Date(this.startDate);
     const end = new Date(this.endDate);
@@ -365,6 +355,14 @@ export class DashboardComponent implements OnInit {
   onDateChange() {
     if (this.startDate && this.endDate) {
       this.filterDataByDateRange();
+    }
+  }
+
+  eraseContent(event: boolean): void {
+    localStorage.removeItem('csvData');
+    if(event) {
+      this.csvData = [];
+      this.loadCsvData();
     }
   }
 

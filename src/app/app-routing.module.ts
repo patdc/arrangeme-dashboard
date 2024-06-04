@@ -5,6 +5,7 @@ import { DarkChannelComponent } from './dark-channel/dark-channel.component';
 import { TrendsComponent } from './trends/trends.component';
 import { UtilsComponent } from './utils/utils.component';
 import { DarkChannelSheetMusicComponent } from './dark-channel-sm/dark-channel-sm.component';
+import { UtilsDesignComponent } from './utils-design/utils-design.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'utils',
     component: UtilsComponent,
+  },
+  {
+    path: 'utils-design',
+    component: UtilsDesignComponent,
   },
   {
     path: ':year',

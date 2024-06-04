@@ -1,19 +1,35 @@
-<div>
-  <h1 class="text-3xl text-slate-700 font-bold">Utilitários</h1>
-  Selecione uma ferramenta para te ajudar no seu dia-a-dia
+<div class="mb-8">
+  <h1 class="text-3xl text-slate-700 font-bold">Utilitários para Edição de Partituras</h1>
+  <hr class="my-4">
 </div>
 
 
-<div>
-  Posso vender essa partitura de domínio público?
-  <input type="text">
+<div class="searchCopyrightedSong">
+  <h1 class="text-xl text-slate-700 font-bold">
+    Verificação de Direitos Autorais
+  </h1>
+  <h3 class="text-lg mb-5 mt-0">
+    Posso vender essa partitura com direitos autorais?
+  </h3>
+
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <input class="form-input" type="text" formControlName="query" required placeholder="Insira o nome da música" />
+    <button type="submit" cdzButton [variant]="'filled'" [color]="'primary'" [size]="'xl'">
+      Buscar música no ArrangeMe
+      <fa-icon [icon]="faSearch"></fa-icon>
+    </button>
+  </form>
   <p>
-    <a href="https://www.arrangeme.com/images/where-to-include-credits2.png">
-      Veja onde inserir as informações de copyright
+    <a href="https://www.arrangeme.com/images/where-to-include-credits2.png" target="_blank">
+      <fa-icon [icon]="faCircleInfo"></fa-icon>
+      Veja onde inserir as informações de copyright na sua partitura
     </a>
   </p>
 </div>
 
+<div>
+  <h1 class="text-2xl text-slate-700 font-bold">Plugins e VSTs</h1>
+</div>
 
 <div class="card-wrapper">
   <div class="card" *ngFor="let util of utils">
@@ -29,6 +45,8 @@
     </div>
   </div>
 </div>
+
+
 
 <div>
   <h1 class="text-2xl text-slate-700 font-bold">Fontes de Partitura</h1>
